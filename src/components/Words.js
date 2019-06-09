@@ -47,7 +47,7 @@ class Words extends React.Component {
     _post(word) {
         return fetch(`${databaseURL}/words.json`, {
             method: 'POST',
-            body: JSON.stringfy(word)
+            body: JSON.stringify(word)
         }).then(res => {
             if(res.status != 200) {
                 throw new Error(res.statusText);
@@ -111,6 +111,9 @@ class Words extends React.Component {
     }
 
     render() {
+
+        const { classes } = this.props;
+
         return (
             <div>
                 {Object.keys(this.state.words).map(id => {
@@ -139,9 +142,23 @@ class Words extends React.Component {
                         </Card>
                     );
                 })}
+                <Fab color="primary" className={classes.fab} onClick={this.handleDialogToggle}>
+                    <AddIcon />
+                </Fab>
+                <Dialog open={this.state.dialog} onClose={this.handleDialogToggle}>
+                    <DialogTitle>Add words</DialogTitle>
+                    <DialogContent>
+                        <TextField label="Words" type="text" name="word" value={this.state.word} onChange={this.handleValueChange} /> <br/>
+                        <TextField label="Weights" type="text" name="weight" value={this.state.weight} onChange={this.handleValueChange} /> <br/>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button variant="contained" color="primary" onClick={this.handleSubmit}>ADD</Button>
+                        <Button variant="outlined" color="primary" onClick={this.handleDialogToggle}>CLOSE</Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         );
     }
 }
 
-export default Words;
+export default withStyles(styles)(Words);
