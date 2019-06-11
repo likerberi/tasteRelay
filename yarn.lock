@@ -8102,7 +8102,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-prop-types@^15.6.0, prop-types@^15.6.2:
+prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -8413,6 +8413,12 @@ react-scripts@3.0.1:
     workbox-webpack-plugin "4.2.0"
   optionalDependencies:
     fsevents "2.0.6"
+
+react-text-truncate@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/react-text-truncate/-/react-text-truncate-0.14.1.tgz#1bdf420d22c3fc2ff740ebc84f8c659e7f2b5e9f"
+  dependencies:
+    prop-types "^15.5.7"
 
 react-transition-group@^2.2.1:
   version "2.9.0"
