@@ -13,6 +13,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
     hidden: {
@@ -134,6 +136,37 @@ class Texts extends React.Component {
         const { classes } = this.props;
         return (
             <div>
+                {Object.keys(this.state.texts).map(id => {
+                    const text = this.state.texts[id];
+                    return (
+                        <Card key={id}>
+                            <CardContent>
+                                <Typography color="textSecondary" gutterBottom>
+                                    Content: {text.textContent.substring(0, 24) + "..."}
+                                </Typography>
+                                <Grid container>
+                                    <Grid item xs={6}>
+                                        <Typography variant="h5" component="h2">
+                                            {text.textName.substring(0, 14) + "..."}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        
+                                        <Link component={RouterLink} to={"detail/" + id}>
+                                            <Button variant="contained" color="primary">Watch</Button>
+                                        </Link>
+                                        
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Button variant="contained" color="primary" onClick={() => this.handleDelete(id)}>DELETE</Button>
+                                    </Grid>
+
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    )
+                })}
+
                 <Fab color="primary" className={classes.fab} onClick={this.handleDialogToggle}>
                     <AddIcon />
                 </Fab>
@@ -149,7 +182,7 @@ class Texts extends React.Component {
                         </label>
                         <TextTruncate
                             line={1}
-                            texttruncate="..."
+                            truncateText="..."
                             text={this.state.fileContent}
                         />
                     </DialogContent>
