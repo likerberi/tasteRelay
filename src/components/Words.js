@@ -80,7 +80,7 @@ class Words extends React.Component {
     //     return nextState.words != this.state.words;
     // }
     // component gen -> 
-
+    
     handleDialogToggle = () => this.setState({
         dialog: !this.state.dialog
     })
