@@ -12,6 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import '../index.css';
 
 const styles = theme => ({
     fab: {
@@ -89,6 +90,12 @@ class Words extends React.Component {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
+
+        if(e.target.value < 1) {
+            this.setState({weight: 1})
+        } else if (e.target.value > 9) {
+            this.setState({weight: 9})
+        }
     }
 
     componentDidMount() {
